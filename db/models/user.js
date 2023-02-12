@@ -11,7 +11,7 @@ const User = new mongoose.Schema(
       type: String,
       required: true,
     },
-    roles: {
+    role: {
       type: String,
       default: "visitor",
       enum: ["admin", "visitor"],
