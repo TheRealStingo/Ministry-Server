@@ -19,6 +19,7 @@ const signInUpValidation = (payload) => {
 
 const innovantValidation = (payload) => {
   const schema = Joi.object({
+    _id: Joi.string(),
     type: Joi.string().valid("PI").required(),
     num_label: Joi.string().min(6).max(255).required(),
     year: Joi.string().length(4).required(),
@@ -51,6 +52,7 @@ const innovantValidation = (payload) => {
 };
 const startupValidation = (payload) => {
   const schema = Joi.object({
+    _id: Joi.string(),
     type: Joi.string().valid("ST").required(),
     num_label: Joi.string().min(6).max(255).required(),
     year: Joi.string().length(4).required(),
