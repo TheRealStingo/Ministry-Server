@@ -25,12 +25,10 @@ const Create = async (req, res) => {
   }
   try {
     const { error, value } = validationPointer(req.body);
-    console.log({ error, value });
     if (error) return res.send({ error: error.details[0].message });
     const doc = await dbPointer.create(value);
-    return res.send({ doc });
+    return res.send({ success: true });
   } catch (error) {
-    console.log(error);
     return res.send({ error });
   }
 };
