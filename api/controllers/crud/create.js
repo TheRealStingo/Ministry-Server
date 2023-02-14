@@ -4,7 +4,6 @@ const {
   startupValidation,
   innovantValidation,
 } = require("../../utils/validator");
-const User = require("../../../db/models/users/user");
 
 const Create = async (req, res) => {
   let dbPointer, validationPointer;
