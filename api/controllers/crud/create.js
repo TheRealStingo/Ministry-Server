@@ -5,7 +5,7 @@ const {
   innovantValidation,
 } = require("../../utils/validator");
 
-const Create = async (req, res) => {
+const CreateDoc = async (req, res) => {
   let dbPointer, validationPointer;
   if (req.user.role == "visitor") return res.send({ message: "Unauthorized" });
   const { type } = req.body;
@@ -32,4 +32,4 @@ const Create = async (req, res) => {
   }
 };
 
-module.exports = Create;
+module.exports = CreateDoc;
