@@ -2,9 +2,12 @@ require("dotenv").config();
 const User = require("../../../db/models/users/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { signInUpValidation } = require("../../utils/validator");
 
 const Signin = async (req, res) => {
-  const { email, password } = req.body;
+  const { error, value } = signInUpValidation(req.body);
+  if (error) return res.send({ error: error.details[0].message });
+  const { email, password } = value;
   try {
     const user = await User.findOne({ email });
     if (!user) return res.send({ message: "Signup Please" });

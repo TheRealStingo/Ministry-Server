@@ -1,7 +1,10 @@
 const User = require("../../../db/models//users/user");
 const bcrypt = require("bcrypt");
+const { signInUpValidation } = require("../../utils/validator");
 const Signup = async (req, res) => {
-  const { email, password } = req.body;
+  const { error, value } = signInUpValidation(req.body);
+  if (error) return res.send({ error: error.details[0].message });
+  const { email, password } = value;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({

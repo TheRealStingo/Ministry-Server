@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const Pi = new mongoose.Schema({
-  type:{
-    type:String,
-   default:"PI"
-},
+  type: {
+    type: String,
+    default: "PI",
+  },
   num_label: {
     type: String,
     required: true,
+    uppercase: true,
     trim: true,
   },
   year: {
@@ -22,17 +23,20 @@ const Pi = new mongoose.Schema({
   first_name: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   last_name: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   sex: {
     type: String,
+    lowercase: true,
     required: true,
-    enum: ["man", "woman"],
+    enum: ["male", "female"],
   },
   coFounders: {
     type: Array,
@@ -41,6 +45,7 @@ const Pi = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   phone: {
@@ -51,11 +56,13 @@ const Pi = new mongoose.Schema({
   website: {
     type: String,
     default: "",
+    lowercase: true,
     trim: true,
   },
   project_name: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   activity: {
@@ -66,12 +73,14 @@ const Pi = new mongoose.Schema({
   description: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
 
-  presentaion: {
+  presentation: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   advancement: {
@@ -81,11 +90,13 @@ const Pi = new mongoose.Schema({
   },
   cv: {
     type: String,
+    lowercase: true,
     default: "",
     trim: true,
   },
   certificate: {
     type: String,
+    lowercase: true,
     default: "",
     trim: true,
   },
@@ -99,13 +110,15 @@ const Pi = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  adress: {
+  address: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   other: {
     type: String,
+    lowercase: true,
     default: "",
     trim: true,
   },

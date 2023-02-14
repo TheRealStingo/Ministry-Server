@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const St = new mongoose.Schema({
-    type:{
-        type:String,
-       default:"ST"
-    },
+  type: {
+    type: String,
+    default: "ST",
+  },
   num_label: {
     type: String,
     required: true,
+    uppercase: true,
     trim: true,
   },
   year: {
@@ -28,27 +29,32 @@ const St = new mongoose.Schema({
   first_name: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   last_name: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   sex: {
     type: String,
     required: true,
-    enum: ["man", "woman"],
+    enum: ["male", "female"],
+    lowercase: true,
   },
   qualifications: {
     type: String,
     default: "",
+    lowercase: true,
     trim: true,
   },
 
   email: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   phone: {
@@ -59,11 +65,13 @@ const St = new mongoose.Schema({
   website: {
     type: String,
     default: "",
+    lowercase: true,
     trim: true,
   },
   startup_name: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   activity: {
@@ -74,22 +82,26 @@ const St = new mongoose.Schema({
   description: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   juridic_status: {
     type: String,
     default: "",
+    lowercase: true,
     trim: true,
   },
   nif: {
     type: String,
+    uppercase: true,
     required: true,
     trim: true,
   },
 
-  presentaion: {
+  presentation: {
     type: String,
     required: true,
+    lowercase: true,
     trim: true,
   },
   register: {
@@ -97,15 +109,15 @@ const St = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  certificate: {
-    type: String,
-    default: "",
-    trim: true,
-  },
-
   advancement: {
     type: String,
     required: true,
+    trim: true,
+  },
+  certificate: {
+    type: String,
+    default: "",
+    lowercase: true,
     trim: true,
   },
   recompense: {
@@ -119,15 +131,17 @@ const St = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  adress: {
+  address: {
     type: String,
     required: true,
     trim: true,
+    lowercase: true,
   },
   other: {
     type: String,
     default: "",
     trim: true,
+    lowercase: true,
   },
 });
 
