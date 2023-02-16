@@ -10,7 +10,7 @@ const Signin = async (req, res) => {
   const { email, password } = value;
   try {
     const user = await User.findOne({ email });
-    if (!user) return res.send({ message: "Signup Please" });
+    if (!user) return res.send({ error: "Signup Please" });
     const matchedPassword = await bcrypt.compare(password, user.password);
     if (matchedPassword) {
       const token = jwt.sign(
