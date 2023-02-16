@@ -60,6 +60,7 @@ const startupValidation = (payload) => {
     num_employees: Joi.number().required(),
     first_name: Joi.string().min(6).max(255).required(),
     last_name: Joi.string().min(6).max(255).required(),
+    result: Joi.string().min(6).max(255).required(),
     sex: Joi.string().valid("male", "female").required(),
     qualifications: Joi.string().min(6).max(255),
     email: Joi.string().min(6).max(255).email().required().messages({
