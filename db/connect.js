@@ -3,7 +3,7 @@ mongoose.set("strictQuery", true);
 require("dotenv").config();
 
 const connectDB = () =>
-  mongoose.connect("mongodb://localhost:27017/admin", {
+  mongoose.connect(process.env.MONGO_URIV2, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
