@@ -1,8 +1,10 @@
 const innovant = require("../../../db/models/lgl/innovant");
 const Startup = require("../../../db/models/lgl/startup");
+const Incubator = require("../../../db/models/lgl/incubator");
 const {
   startupValidation,
   innovantValidation,
+  incubatorValidation,
 } = require("../../utils/validator");
 
 const CreateDoc = async (req, res) => {
@@ -17,6 +19,10 @@ const CreateDoc = async (req, res) => {
     case "ST":
       dbPointer = Startup;
       validationPointer = startupValidation;
+      break;
+    case "IN":
+      dbPointer = Incubator;
+      validationPointer = incubatorValidation;
       break;
 
     default:

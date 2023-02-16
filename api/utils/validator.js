@@ -86,9 +86,47 @@ const startupValidation = (payload) => {
   });
   return schema.validate(payload);
 };
+const incubatorValidation = (payload) => {
+  const schema = Joi.object({
+    _id: Joi.string(),
+    type: Joi.string().valid("IN").required(),
+    num_label: Joi.string().min(6).max(255).required(),
+    year: Joi.string().length(4).required(),
+    Incubator_name: Joi.string().min(6).max(255).required(),
+    description: Joi.string().min(6).max(255).required(),
+    services: Joi.array().required(),
+    plan: Joi.string().min(6).max(255).required(),
+    presentation: Joi.string().min(6).max(255).required(),
+    incubed_st: Joi.array(),
+    cv: Joi.string().min(6).max(255).required(),
+    num_employees: Joi.number().required(),
+    juridic_status: Joi.string().min(6).max(255).required(),
+    first_name: Joi.string().min(6).max(255).required(),
+    last_name: Joi.string().min(6).max(255).required(),
+    sex: Joi.string().valid("male", "female").required(),
+    coFounders: Joi.array(),
+    state: Joi.string().min(3).max(30).required(),
+    address: Joi.string().min(3).max(150).required(),
+    email: Joi.string().min(6).max(255).email().required().messages({
+      "string.min": "Email must be at least 6 characters",
+      "string.max": "Email must be less than 255 characters",
+      "string.email": "Email must be a valid email",
+      "any.required": "Email is required",
+    }),
+    phone: Joi.string().min(8).max(12).required(),
+    creation_date: Joi.string().length(10).required(),
+    nif: Joi.string().min(6).max(255).required(),
+    register: Joi.string().min(6).max(255).required(),
+    social_status: Joi.string().min(6).max(255).required(),
+    agreement: Joi.string().min(6).max(255).required(),
+    other: Joi.string().min(10).max(255),
+  });
+  return schema.validate(payload);
+};
 
 module.exports = {
   signInUpValidation,
   startupValidation,
   innovantValidation,
+  incubatorValidation,
 };
