@@ -9,8 +9,8 @@ const Upload = multer({
       const uniqueSuffix = [...Array(32)]
         .map(() => Math.floor(Math.random() * 16).toString(16))
         .join("");
-      req.fileUid = uniqueSuffix;
       const EXT = "." + file.originalname.split(".")[1];
+      req.fileUid = uniqueSuffix + EXT;
       cb(null, uniqueSuffix + EXT);
     },
   }),

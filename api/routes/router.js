@@ -6,6 +6,7 @@ const Create = require("../controllers/crud/create");
 const Update = require("../controllers/crud/update");
 const Delete = require("../controllers/crud/delete");
 const { Upload, HandleUpload } = require("../controllers/upload/upload");
+const Download = require("../controllers/upload/download");
 const {
   getAllDocs,
   getAllIncubators,
@@ -19,10 +20,11 @@ router.route("/create").post(Auth, Create);
 router.route("/update").post(Auth, Update);
 router.route("/delete").post(Auth, Delete);
 router.route("/upload-file").post(Upload, HandleUpload);
-router.route("/list/pi").get(Auth,getAllInnovants)
-router.route("/list/st").get(Auth,getAllStartups)
-router.route("/list/in").get(Auth,getAllIncubators)
-router.route("/list").get(Auth,getAllInnovants)
+router.route("/download-file/:fileUid").get(Download);
+router.route("/list/pi").get(Auth, getAllInnovants);
+router.route("/list/st").get(Auth, getAllStartups);
+router.route("/list/in").get(Auth, getAllIncubators);
+router.route("/list").get(Auth, getAllInnovants);
 // router
 //   .route("/dl/:id")
 //   .get((req, res) =>
