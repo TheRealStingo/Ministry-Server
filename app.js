@@ -11,7 +11,7 @@ app.use("*",INVALID_ROUTE)
 
 
 
-app.listen(300,()=>{
+app.listen(8080,()=>{
     connectDB().then(()=>{
         console.log("good")
     })
