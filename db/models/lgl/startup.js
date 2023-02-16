@@ -137,6 +137,11 @@ const St = new mongoose.Schema({
     trim: true,
     lowercase: true,
   },
+  result:{
+    type: String,
+    trim: true,
+    lowercase: true,
+  },
   other: {
     type: String,
     default: "",
