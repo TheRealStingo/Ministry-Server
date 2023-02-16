@@ -137,7 +137,7 @@ const St = new mongoose.Schema({
     trim: true,
     lowercase: true,
   },
-  result:{
+  result: {
     type: String,
     trim: true,
     lowercase: true,
