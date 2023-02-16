@@ -1,6 +1,6 @@
 const innovant = require("../../../db/models/lgl/innovant");
 const Startup = require("../../../db/models/lgl/startup");
-
+const Incubator = require("../../../db/models/lgl/incubator");
 const deleteDoc = async (req, res) => {
   let dbPointer;
   if (req.user.role != "admin") return res.send({ message: "Unauthorized" });
@@ -13,6 +13,9 @@ const deleteDoc = async (req, res) => {
       break;
     case "ST":
       dbPointer = Startup;
+      break;
+    case "IN":
+      dbPointer = Incubator;
       break;
 
     default:

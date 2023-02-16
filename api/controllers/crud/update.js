@@ -1,8 +1,10 @@
 const innovant = require("../../../db/models/lgl/innovant");
 const Startup = require("../../../db/models/lgl/startup");
+const Incubator = require("../../../db/models/lgl/incubator");
 const {
   startupValidation,
   innovantValidation,
+  incubatorValidation,
 } = require("../../utils/validator");
 
 const updateDoc = async (req, res) => {
@@ -20,7 +22,10 @@ const updateDoc = async (req, res) => {
       dbPointer = Startup;
       validationPointer = startupValidation;
       break;
-
+    case "IN":
+      dbPointer = Incubator;
+      validationPointer = incubatorValidation;
+      break;
     default:
       return res.send({ error: "Invalid Type" });
   }
@@ -31,7 +36,8 @@ const updateDoc = async (req, res) => {
       runValidators: true,
       new: true,
     });
-    return res.send({ doc });
+    if (!doc) return res.send({ message: "Document doesnt exist" });
+    return res.send({ success: true });
   } catch (error) {
     res.send({ error });
   }
