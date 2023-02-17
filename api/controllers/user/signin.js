@@ -18,7 +18,7 @@ const Signin = async (req, res) => {
         process.env.JWT_SECRET,
         { expiresIn: "7d" }
       );
-      return res.send({ sucess: true, token });
+      return res.send({ sucess: true, token, email: user.email });
     }
     return res.send({ sucess: false });
   } catch (error) {
