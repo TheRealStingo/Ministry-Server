@@ -35,18 +35,18 @@ const innovantValidation = (payload) => {
       "any.required": "Email is required",
     }),
     phone: Joi.string().min(8).max(12).required(),
-    website: Joi.string().min(6).max(255),
+    website: Joi.string().min(6).max(255).allow(""),
     project_name: Joi.string().min(6).max(255).required(),
     activity: Joi.string().min(6).max(255).required(),
     description: Joi.string().min(6).max(255).required(),
     presentation: Joi.string().min(6).max(255).required(),
     advancement: Joi.string().min(6).max(255).required(),
-    cv: Joi.string().min(6).max(255),
-    certificate: Joi.string().min(6).max(255),
-    recompense: Joi.string().min(6).max(255),
+    cv: Joi.string().min(6).max(255).allow(""),
+    certificate: Joi.string().min(6).max(255).allow(""),
+    recompense: Joi.string().min(6).max(255).allow(""),
     state: Joi.string().min(3).max(30).required(),
     address: Joi.string().min(3).max(150).required(),
-    other: Joi.string().min(10).max(255),
+    other: Joi.string().min(10).max(255).allow(""),
   });
   return schema.validate(payload);
 };
@@ -62,7 +62,7 @@ const startupValidation = (payload) => {
     last_name: Joi.string().min(6).max(255).required(),
     result: Joi.string().min(6).max(255).required(),
     sex: Joi.string().valid("male", "female").required(),
-    qualifications: Joi.string().min(6).max(255),
+    qualifications: Joi.string().min(6).max(255).allow(""),
     email: Joi.string().min(6).max(255).email().required().messages({
       "string.min": "Email must be at least 6 characters",
       "string.max": "Email must be less than 255 characters",
@@ -70,7 +70,7 @@ const startupValidation = (payload) => {
       "any.required": "Email is required",
     }),
     phone: Joi.string().min(8).max(12).required(),
-    website: Joi.string().min(6).max(255),
+    website: Joi.string().min(6).max(255).allow(""),
     startup_name: Joi.string().min(6).max(255).required(),
     activity: Joi.string().min(6).max(255).required(),
     description: Joi.string().min(6).max(255).required(),
@@ -79,11 +79,11 @@ const startupValidation = (payload) => {
     presentation: Joi.string().min(6).max(255).required(),
     register: Joi.string().min(6).max(255).required(),
     advancement: Joi.string().min(6).max(255).required(),
-    certificate: Joi.string().min(6).max(255),
-    recompense: Joi.string().min(6).max(255),
+    certificate: Joi.string().min(6).max(255).allow(""),
+    recompense: Joi.string().min(6).max(255).allow(""),
     state: Joi.string().min(3).max(30).required(),
     address: Joi.string().min(3).max(150).required(),
-    other: Joi.string().min(10).max(255),
+    other: Joi.string().min(10).max(255).allow(""),
   });
   return schema.validate(payload);
 };
@@ -120,7 +120,7 @@ const incubatorValidation = (payload) => {
     register: Joi.string().min(6).max(255).required(),
     social_status: Joi.string().min(6).max(255).required(),
     agreement: Joi.string().min(6).max(255).required(),
-    other: Joi.string().min(10).max(255),
+    other: Joi.string().min(10).max(255).allow(""),
   });
   return schema.validate(payload);
 };

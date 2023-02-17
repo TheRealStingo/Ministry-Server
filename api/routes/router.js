@@ -12,6 +12,7 @@ const {
   getAllIncubators,
   getAllInnovants,
   getAllStartups,
+  getDocumentById
 } = require("../controllers/fetching/fetch");
 
 router.route("/signup").post(Signup);
@@ -24,7 +25,8 @@ router.route("/download-file/:fileUid").get(Download);
 router.route("/list/pi").get(Auth, getAllInnovants);
 router.route("/list/st").get(Auth, getAllStartups);
 router.route("/list/in").get(Auth, getAllIncubators);
-router.route("/list").get(Auth, getAllInnovants);
+router.route("/list").get(Auth, getAllDocs);
+router.route("/document/:type/:_id").get(Auth,getDocumentById)
 // router
 //   .route("/dl/:id")
 //   .get((req, res) =>

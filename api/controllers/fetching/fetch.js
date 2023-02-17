@@ -46,9 +46,35 @@ const getAllIncubators = async (req, res) => {
   }
 };
 
+const getDocumentById = async (req, res) => {
+  const { type, _id } = req.params;
+  let dbPointer;
+  switch (type) {
+    case "pi":
+      dbPointer = innovant;
+      break;
+    case "st":
+      dbPointer = Startup;
+      break;
+    case "in":
+      dbPointer = Incubator;
+      break;
+    default:
+      return res.send({ error: "Invalid Type" });
+  }
+  try {
+     const doc = await dbPointer.findById(_id)
+     if(!doc) return res.send({message:"Document Not found"})
+     return res.send({doc})
+  } catch (error) {
+    return res.send({error})
+  }
+};
+
 module.exports = {
   getAllDocs,
   getAllIncubators,
   getAllInnovants,
   getAllStartups,
+  getDocumentById
 };
