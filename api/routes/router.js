@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Auth = require("../middlewares/auth");
-const Signup = require("../controllers/user/signup");
-const Signin = require("../controllers/user/signin");
+const Signup = require("../controllers/auth/signup");
+const Signin = require("../controllers/auth/signin");
 const Create = require("../controllers/crud/create");
 const Update = require("../controllers/crud/update");
 const Delete = require("../controllers/crud/delete");
@@ -12,7 +12,8 @@ const {
   getAllIncubators,
   getAllInnovants,
   getAllStartups,
-  getDocumentById
+  getDocumentById,
+  getDocumentsByQuery
 } = require("../controllers/fetching/fetch");
 
 router.route("/signup").post(Signup);
@@ -27,6 +28,7 @@ router.route("/list/st").get(Auth, getAllStartups);
 router.route("/list/in").get(Auth, getAllIncubators);
 router.route("/list").get(Auth, getAllDocs);
 router.route("/document/:type/:_id").get(Auth,getDocumentById)
+router.route("/document").get(Auth,getDocumentsByQuery)
 // router
 //   .route("/dl/:id")
 //   .get((req, res) =>

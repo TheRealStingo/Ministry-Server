@@ -15,7 +15,7 @@ const In = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  Incubator_name: {
+  incubator_name: {
     type: String,
     required: true,
     lowercase: true,

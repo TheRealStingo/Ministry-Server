@@ -63,11 +63,44 @@ const getDocumentById = async (req, res) => {
       return res.send({ error: "Invalid Type" });
   }
   try {
-     const doc = await dbPointer.findById(_id)
-     if(!doc) return res.send({message:"Document Not found"})
-     return res.send({doc})
+    const doc = await dbPointer.findById(_id);
+    if (!doc) return res.send({ message: "Document Not found" });
+    return res.send({ doc });
   } catch (error) {
-    return res.send({error})
+    return res.send({ error });
+  }
+};
+
+const getDocumentsByQuery = async (req, res) => {
+  const { type } = req.query;
+  let dbPointer;
+  switch (type) {
+    case "pi":
+      dbPointer = innovant;
+      break;
+    case "st":
+      dbPointer = Startup;
+      break;
+    case "in":
+      dbPointer = Incubator;
+      break;
+    default:
+      return res.send({ error: "Invalid Type" });
+  }
+  Object.filter = (obj, predicate) =>
+    Object.keys(obj)
+      .filter((key) => predicate(obj[key]))
+      .reduce((res, key) => ((res[key] = obj[key]), res), {});
+  let filters = Object.filter(req.query, (query) => query);
+  delete filters.type;
+  try {
+    if (Object.keys(filters).length === 0)
+      return res.send({ message: "Please Add Queries" });
+    const docs = await Incubator.find(filters).sort({ createdAt: "asc" });
+    if (docs.length == 0) return res.send({ message: "No Docs Found" });
+    return res.send({ docs });
+  } catch (error) {
+    return res.send({ error });
   }
 };
 
@@ -76,5 +109,6 @@ module.exports = {
   getAllIncubators,
   getAllInnovants,
   getAllStartups,
-  getDocumentById
+  getDocumentById,
+  getDocumentsByQuery,
 };

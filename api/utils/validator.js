@@ -93,7 +93,7 @@ const incubatorValidation = (payload) => {
     type: Joi.string().valid("IN").required(),
     num_label: Joi.string().min(6).max(255).required(),
     year: Joi.string().length(4).required(),
-    Incubator_name: Joi.string().min(6).max(255).required(),
+    incubator_name: Joi.string().min(6).max(255).required(),
     description: Joi.string().min(6).max(255).required(),
     services: Joi.array().required(),
     plan: Joi.string().min(6).max(255).required(),

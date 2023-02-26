@@ -1,4 +1,4 @@
-const User = require("../../../db/models//users/user");
+const User = require("../../../db/models/users/user");
 const bcrypt = require("bcrypt");
 const { signInUpValidation } = require("../../utils/validator");
 const Signup = async (req, res) => {
