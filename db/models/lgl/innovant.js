@@ -122,6 +122,12 @@ const Pi = new mongoose.Schema({
     default: "",
     trim: true,
   },
+  status: {
+    type: String,
+    default: "",
+    trim: true,
+    lowercase: true,
+  },
 });
 
 module.exports = mongoose.model("innovant Project", Pi);

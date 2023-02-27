@@ -144,6 +144,12 @@ const In = new mongoose.Schema({
     trim: true,
     lowercase: true,
   },
+  status: {
+    type: String,
+    default: "",
+    trim: true,
+    lowercase: true,
+  },
 });
 
 module.exports = mongoose.model("Incubator", In);

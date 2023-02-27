@@ -47,6 +47,7 @@ const innovantValidation = (payload) => {
     state: Joi.string().min(3).max(30).required(),
     address: Joi.string().min(3).max(150).required(),
     other: Joi.string().min(10).max(255).allow(""),
+    status: Joi.string().min(5).max(255).required(),
   });
   return schema.validate(payload);
 };
@@ -84,6 +85,7 @@ const startupValidation = (payload) => {
     state: Joi.string().min(3).max(30).required(),
     address: Joi.string().min(3).max(150).required(),
     other: Joi.string().min(10).max(255).allow(""),
+    status: Joi.string().min(5).max(255).required(),
   });
   return schema.validate(payload);
 };
@@ -121,6 +123,7 @@ const incubatorValidation = (payload) => {
     social_status: Joi.string().min(6).max(255).required(),
     agreement: Joi.string().min(6).max(255).required(),
     other: Joi.string().min(10).max(255).allow(""),
+    status: Joi.string().min(5).max(255).required(),
   });
   return schema.validate(payload);
 };
