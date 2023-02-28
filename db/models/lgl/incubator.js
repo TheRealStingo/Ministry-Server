@@ -150,6 +150,11 @@ const In = new mongoose.Schema({
     trim: true,
     lowercase: true,
   },
+  pdf:{
+    type: String,
+    trim: true,
+    lowercase: true,
+  }
 });
 
 module.exports = mongoose.model("Incubator", In);
